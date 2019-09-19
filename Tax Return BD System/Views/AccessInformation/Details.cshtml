@@ -1,0 +1,51 @@
+﻿@model GSA_Management_Information_System.Models.AccessListInformation
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AccessListInformation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccessName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaseModule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaseModule)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Controller)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Controller)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Action)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AccessId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

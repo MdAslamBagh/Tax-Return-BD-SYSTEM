@@ -1,0 +1,220 @@
+﻿@model IEnumerable<GSA_Management_Information_System.Models.UserInformation>
+
+@{
+    ViewBag.Title = "Index";
+   
+}
+    <div class="container">
+
+        <a class="btn btn-success" style="margin-bottom:10px" onclick="location.href='@Url.Action("AddOrEdit", "UserInformation")'"><i class="fa fa-plus"></i>Add New</a>
+            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                       
+                        <th>UserName</th>
+                        <th>UserRoles</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Phoneno</th>
+                        <th>Password</th>
+                        <th>Confirm_Password</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                </table>
+
+
+            <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
+
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+            @section scripts{
+                <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+                <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+                <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+                <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
+                <script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+                <script src="~/Scripts/notify.min.js"></script>
+                <script>
+                    var Popup, dataTables;
+                    $(document).ready(function () {
+                        dataTables = $("#example").DataTable({
+                            "ajax": {
+                                "url": "/UserInformation/GetData",
+                                "type": "GET",
+                                "datatype": "JSON"
+                            },
+                            "columns": [
+                                { "data": "UserName" },
+                                { "data": "UserRoles" },
+                                { "data": "Email" },
+                                { "data": "Address" },
+                                { "data": "Phoneno" },
+                                { "data": "Password" },
+                                { "data": "Confirm_Password" },
+                                { "data": "UserId", "render": function (data) {              
+                                    return "<a class='btn btn-default btn-sm' onclick=location.href='@Url.Action("AddOrEdit", "UserInformation")/" + data + "'><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm'style='margin-left:5px'onclick=Delete("+ data +")><i class='fa fa-trash'></i> Delete</a>"
+                                },
+                                    "orderable": false,
+                                    "searchable":false,
+                                    "width":"150px"
+                                }
+
+
+                            ],
+
+
+                             "language": {
+                                 "emptyTable": "No data found, please click on <b>Add New</b> Button"
+                            }
+                        });
+                    });
+                    function PopupForm(url) {
+                        alert("Hello! I am an alert box!!");
+                        var formDiv = $('<div/>');
+                        $.get(url)
+                            .done(function (response) {
+
+                                formDiv.html(response);
+
+                                Popup = formDiv.dialog({
+                                    autoOpen: true,
+                                    resizeable: true,
+                                    title: 'Fill User Details',
+                                    height: 500,
+                                    width: 700,
+                                    close: function () {
+                                        Popup.dialog('destroy'), remove();
+
+
+
+
+                                    }
+
+
+                            });
+                            });
+
+                    }
+                   
+                    function SubmitForm(form) {
+                        $.ajax({
+                            type: "post",
+                            url: form.action,
+                            data: $(form).serialize(),
+                            success: function (data) {
+                                
+                                if (data.success) {
+                                    dataTables.ajax.reload();
+                                    $.notify(data.message, {
+                                        
+                                        globalPosition: "top center",
+                                        className: "success"
+                                        
+
+                                    })
+                                    
+
+                                    Popup.dialog('close');
+
+                                }
+                                }
+
+                        });
+
+                        return false;
+                    }
+
+
+                       
+
+
+                    function Delete(id) {
+
+                        if (confirm('Are you sure you want to delete this user record ?'))
+                        {
+                            $.ajax({
+                                type: "post",
+                                url: '@Url.Action("Delete","UserInformation")/' + id,
+                                success: function (data) {
+
+                                    if (data.success) {
+                                        dataTables.ajax.reload();
+
+                                        $.notify(data.message, {
+                                            globalPosition: "top center",
+                                            className: "success"
+
+                                        })
+
+
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                </script>
+
+
+                }
+
+        </div>
+
+           
+
+
+  
+
+    @*<h2>User List</h2>*@
+
+    @*<p>
+            @Html.ActionLink("Add New User", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Last_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phoneno)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.First_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Last_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phoneno)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+                    </td>
+                </tr>
+            }
+
+        </table>*@
