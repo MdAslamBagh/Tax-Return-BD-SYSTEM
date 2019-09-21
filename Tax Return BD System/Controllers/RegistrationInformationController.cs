@@ -26,7 +26,7 @@ namespace Tax_Return_BD_System.Controllers
         }
         public ActionResult Register()
         {
-            ViewBag.Name = new SelectList(db.RoleInformations.Select(u => u.Name).ToList());
+            
             return View();
         }
         // GET: RegistrationInformation/Details/5
@@ -56,11 +56,20 @@ namespace Tax_Return_BD_System.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "FirstName,MiddleName,LastName,Email,Password,ConfirmPassword")] RegistrationInformation registrationInformation)
+        public ActionResult Register(RegistrationInformation registrationInformation)
         {
             if (ModelState.IsValid)
             {
-                db.RegistrationInformations.Add(registrationInformation);
+                if (registrationInformation.Status == null)
+                {
+                    registrationInformation.Status = "Inactive";
+                }
+                if (registrationInformation.UserType == null)
+                {
+                    registrationInformation.UserType = "User";
+                }
+
+                db.RegistrationInformations.Add(registrationInformation);         
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

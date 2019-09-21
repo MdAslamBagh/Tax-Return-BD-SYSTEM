@@ -151,7 +151,8 @@ namespace Tax_Return_BD_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                model.UserType = "User";
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,UserType=model.UserType };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

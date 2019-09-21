@@ -26,6 +26,7 @@ namespace Tax_Return_BD_System.Models
 
         [Display(Name = "DocumentName")]
         public string DocumentName { get; set; }
+        public virtual ICollection<FileDetail> FileDetails { get; set; }
 
     }
 }

@@ -195,47 +195,34 @@
     <Compile Include="Controllers\LoginInformationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegistrationInformationController.cs" />
-    <Compile Include="Controllers\RoleInformationController.cs" />
     <Compile Include="Controllers\UserInformationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909170618131_initial.cs" />
-    <Compile Include="Migrations\201909170618131_initial.Designer.cs">
-      <DependentUpon>201909170618131_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201909191140113_intial.cs" />
+    <Compile Include="Migrations\201909191140113_intial.Designer.cs">
+      <DependentUpon>201909191140113_intial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909170626438_initial1.cs" />
-    <Compile Include="Migrations\201909170626438_initial1.Designer.cs">
-      <DependentUpon>201909170626438_initial1.cs</DependentUpon>
+    <Compile Include="Migrations\201909191152567_intial1.cs" />
+    <Compile Include="Migrations\201909191152567_intial1.Designer.cs">
+      <DependentUpon>201909191152567_intial1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909180758276_initial2.cs" />
-    <Compile Include="Migrations\201909180758276_initial2.Designer.cs">
-      <DependentUpon>201909180758276_initial2.cs</DependentUpon>
+    <Compile Include="Migrations\201909191601350_initial.cs" />
+    <Compile Include="Migrations\201909191601350_initial.Designer.cs">
+      <DependentUpon>201909191601350_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909180759125_initial3.cs" />
-    <Compile Include="Migrations\201909180759125_initial3.Designer.cs">
-      <DependentUpon>201909180759125_initial3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909181019496_initial4.cs" />
-    <Compile Include="Migrations\201909181019496_initial4.Designer.cs">
-      <DependentUpon>201909181019496_initial4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909181138295_initial5.cs" />
-    <Compile Include="Migrations\201909181138295_initial5.Designer.cs">
-      <DependentUpon>201909181138295_initial5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909181139003_initial6.cs" />
-    <Compile Include="Migrations\201909181139003_initial6.Designer.cs">
-      <DependentUpon>201909181139003_initial6.cs</DependentUpon>
+    <Compile Include="Migrations\201909211258070_initial1.cs" />
+    <Compile Include="Migrations\201909211258070_initial1.Designer.cs">
+      <DependentUpon>201909211258070_initial1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccessInformation.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\FileDetail.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginInformation.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RegistrationInformation.cs" />
-    <Compile Include="Models\RoleInformation.cs" />
     <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -2111,11 +2098,7 @@
     <Content Include="Views\RegistrationInformation\Edit.cshtml" />
     <Content Include="Views\RegistrationInformation\Index.cshtml" />
     <Content Include="Views\RegistrationInformation\Register.cshtml" />
-    <Content Include="Views\RoleInformation\Add.cshtml" />
-    <Content Include="Views\RoleInformation\Delete.cshtml" />
-    <Content Include="Views\RoleInformation\Details.cshtml" />
-    <Content Include="Views\RoleInformation\Edit.cshtml" />
-    <Content Include="Views\RoleInformation\Index.cshtml" />
+    <Content Include="Views\AccessInformation\Role_Create.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Theme\.sass-cache\b687762b7660b1f71ae40e600add14c590cfdbc7\style.scssc" />
@@ -2158,9 +2141,10 @@
     <Content Include="Views\AccessInformation\Edit.cshtml" />
     <Content Include="Views\AccessInformation\Index.cshtml" />
     <Content Include="Views\AccessInformation\SubMenu_Create.cshtml" />
+    <Content Include="Views\AccessInformation\Assign_Role.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -2176,26 +2160,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909170618131_initial.resx">
-      <DependentUpon>201909170618131_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909191140113_intial.resx">
+      <DependentUpon>201909191140113_intial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909170626438_initial1.resx">
-      <DependentUpon>201909170626438_initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909191152567_intial1.resx">
+      <DependentUpon>201909191152567_intial1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909180758276_initial2.resx">
-      <DependentUpon>201909180758276_initial2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909191601350_initial.resx">
+      <DependentUpon>201909191601350_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909180759125_initial3.resx">
-      <DependentUpon>201909180759125_initial3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909181019496_initial4.resx">
-      <DependentUpon>201909181019496_initial4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909181138295_initial5.resx">
-      <DependentUpon>201909181138295_initial5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909181139003_initial6.resx">
-      <DependentUpon>201909181139003_initial6.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909211258070_initial1.resx">
+      <DependentUpon>201909211258070_initial1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

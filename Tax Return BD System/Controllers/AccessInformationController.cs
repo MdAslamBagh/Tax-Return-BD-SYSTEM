@@ -82,6 +82,52 @@ namespace Tax_Return_BD_System.Controllers
 
             return View(subMenuItem);
         }
+        public ActionResult Role_Create()
+        {
+            return View();
+        }
+
+        // POST: RoleInformation/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Role_Create([Bind(Include = "RoleId,RoleName")] RoleInformation roleInformation)
+        {
+            if (ModelState.IsValid)
+            {
+                db.RoleInformations.Add(roleInformation);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(roleInformation);
+        }
+
+
+        public ActionResult Assign_Role()
+        {
+            ViewBag.UserId = new SelectList(db.RegistrationInformations, "UserId", "UserName");
+            ViewBag.RoleId = new SelectList(db.RoleInformations, "RoleId", "RoleName");
+            return View();
+        }
+
+        // POST: RoleInformation/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Assign_Role([Bind(Include = "UserId,RoleId")] RoleInformation roleInformation)
+        {
+            if (ModelState.IsValid)
+            {
+                db.RoleInformations.Add(roleInformation);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(roleInformation);
+        }
 
         // GET: AccessListInformation/Edit/5
         //public ActionResult Edit(int? id)

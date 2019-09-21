@@ -3,8 +3,8 @@
     ViewBag.Title = "Create_Document";
 }
 
-@using (Html.BeginForm("Create_Document", "UserInformation", FormMethod.Post, new { onSubmit = "return SubmitForm(this)" }))
-{
+    @using (Html.BeginForm("Create_Document", "UserInformation", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
     <div class="form-horizontal">
 
         <div class="row">
@@ -16,17 +16,22 @@
                 </div>
             </div>
         </div>
-       
         <div class="row">
             <div class="form-group">
-                <div class="col-md-6">
-                    <div align="right">
-                        <input type="submit" value="submit" class="btn btn-primary" />
-                        <input type="submit" value="reset" class="btn btn-warning" />
+                <input type="file" name="file" multiple="multiple" />
+            </div>
+        </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <div align="right">
+                            <input type="submit" value="submit" class="btn btn-primary" />
+                            <input type="submit" value="reset" class="btn btn-warning" />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 }

@@ -1,4 +1,113 @@
-﻿@model Tax_Return_BD_System.Models.RegisterViewModel
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form</title>
+
+    <!-- Font Icon -->
+    <link rel="icon" type="image/png" href="~/Content/SignupContent/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/SignupContent/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/SignupContent/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/SignupContent/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/SignupContent/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/SignupContent/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/SignupContent/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/SignupContent/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/SignupContent/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/SignupContent/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/SignupContent/css/main.css">
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/Content/SignupContent/css/style.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+    <div class="main">
+
+        <section class="signup">
+            <img src="Content/SignupContent/images/signup-bg.jpg" alt="">
+            <div class="container">
+                <div class="signup-content">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <form method="POST" id="signup-form" class="signup-form">
+                            <h2 class="form-title">Create account</h2>
+                            <div class="form-group">
+                                <input type="text" class="form-input" name="FirstName" id="FirstName" placeholder="First Name" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-input" name="MiddleName" id="MiddleName" placeholder="Middle Name" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-input" name="LastName" id="lastname" placeholder="LastName" />
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" class="form-input" name="email" id="email" placeholder="Your Email" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-input" name="UserName" id="username" placeholder="UserName" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-input" name="password" id="password" placeholder="Password" />
+                                <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-input" name="ConfirmPassword" id="ConfirmPassword" placeholder="Confirm your password" />
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="submit" id="submit" class="form-submit" value="Create" />
+                            </div>
+                        </form>
+                    }
+                    <p class="loginhere">
+                        Have already an account ? <a href="@Url.Action("Login", "LoginInformation")" class="loginhere-link">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
+
+
+
+
+
+
+
+
+
+
+@*@model Tax_Return_BD_System.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
@@ -38,4 +147,4 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@

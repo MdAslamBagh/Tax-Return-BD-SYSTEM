@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -60,14 +61,50 @@ namespace Tax_Return_BD_System.Controllers
         [HttpPost]
         public ActionResult Create_Document(UserDocument userDocument)
         {
+           
             if (ModelState.IsValid)
             {
+                List<FileDetail> fileDetails = new List<FileDetail>();
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+
+                    
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        FileDetail fileDetail = new FileDetail()
+                        {
+                            FileName = fileName,
+                            Extension = Path.GetExtension(fileName),
+                            //Id = Guid.NewGuid()
+                            //Id = Guid.NewGuid();
+                            //Id = fileDetail.Id;
+
+
+                        };
+                        fileDetails.Add(fileDetail);
+
+                        var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"),fileDetail.Id+ fileDetail.Extension);
+                        file.SaveAs(path);
+                    }
+                }
+
+                userDocument.FileDetails = fileDetails;
                 db.UserDocuments.Add(userDocument);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(userDocument);
+            //if (ModelState.IsValid)
+            //{
+            //    db.UserDocuments.Add(userDocument);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            //return View(userDocument);
         }
     
     protected override void Dispose(bool disposing)

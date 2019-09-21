@@ -22,4 +22,17 @@ namespace Tax_Return_BD_System.Models
         public string Controller { get; set; }
         public string Action { get; set; }
     }
+    public class RoleInformation
+    {
+        [Key]
+        public int RoleId { get; set; }
+
+        public string RoleName { get; set; }
+    }
+    public class UserRole
+    {
+        [Key]
+        public string UserId { get; set; }
+        public int RoleId { get; set; }
+    }
 }
