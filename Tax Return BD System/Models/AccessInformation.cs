@@ -32,7 +32,7 @@ namespace Tax_Return_BD_System.Models
     public class UserRole
     {
         [Key]
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public int RoleId { get; set; }
     }
 }

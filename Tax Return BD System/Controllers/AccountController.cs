@@ -151,13 +151,16 @@ namespace Tax_Return_BD_System.Controllers
         {
             if (ModelState.IsValid)
             {
+                //model.UserType="Admin";
+                //model.Status = "Active";
                 model.UserType = "User";
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email,UserType=model.UserType };
+                model.Status = "Inactive";
+                var user = new ApplicationUser { UserId = model.UserId, FirstName = model.FirstName, MiddleName = model.MiddleName, LastName = model.LastName, Email = model.Email, UserName = model.UserName, UserType = model.UserType, Status = model.Status };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -172,6 +175,7 @@ namespace Tax_Return_BD_System.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
 
         //
         // GET: /Account/ConfirmEmail

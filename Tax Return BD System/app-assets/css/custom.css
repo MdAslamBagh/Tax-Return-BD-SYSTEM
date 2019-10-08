@@ -1,0 +1,242 @@
+/* indevisual download print page style */
+.print-button .btn-success{
+	/*width:300px!important;*/
+	margin:0px 0 10px  0!important;
+	text-align:left;
+}
+
+.print-button .fa{
+	font-size:25px!important;
+	float:right;
+	color:#fff;
+}
+.print-button span{
+	float:left;
+}
+.print-button a{
+	line-height:25px;
+	width:100%;
+	display:block;
+}
+#showPaymentLink{
+	font-size:13px;
+	padding-top:20px;
+}
+a.refer-a-friend span{
+	text-align: center; 
+}
+.refer-a-friend .btn-success{
+	/*width:300px!important; */
+	width:100%;
+}
+#contact-form .btn{
+	margin-left:5px;
+}
+.col-center-block {
+    float: none;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/*new style 06-18-2017*/
+
+.income-dashbord .individual_payments_wrapper h3{
+    margin-top: 30px!important;
+    color: #333;
+    /*background: #4CAE4C;*/
+    padding: 5px 10px;
+	font-weight:bold;
+}
+.individual_payments_total a{
+	color:#5cb85c;
+}
+.common-padding{
+	padding:20px;
+}
+.bs-common-example{
+	margin-bottom:15px!important
+}
+.bs-common-example label{
+	margin-bottom: 5px!important;
+}
+.bs-common-example a{
+	color:#7CBC20;
+}
+.payment-status-document .table {
+	width: 100%;
+    overflow-x: scroll;
+}
+.payment-status-document .table thead tr th {
+    border-top: 1px solid #ddd!important;
+    vertical-align: middle;
+    color: #76a615!important;
+	border-bottom: 1px solid #ddd;
+}
+table.dataTable.no-footer{
+	border-bottom: 1px solid #ddd!important;
+}
+.payment-status-document .dataTables_filter{
+	margin-bottom:10px;
+}
+.my-document-profile h2{
+	padding-bottom:20px;
+}
+.started-link-margin-bottom{
+	margin-bottom:5%;
+}
+.started-link a{
+    width: 40%;
+    margin: auto;
+    display: block;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+.started-link a:hover{
+	color:#fff!important;
+}
+.common-margin-top{
+	margin-top:2%;
+}
+.dataTables_wrapper .dataTables_filter input {
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+
+}
+.btn-xl {
+    padding: 3px 2px;
+    font-size: 13px;
+    border-radius: 0px !important;
+    width: 6%;
+    margin-bottom: 3px;
+}
+
+.grid-view .summary{
+	
+	margin-top:10px!important;
+	margin-bottom:10px!important;
+	
+}
+.login-expired .modal-dialog{
+
+    width: 70%!important;
+}
+.login-expired h3, .login-expired h5, .login-expired h6{
+
+    text-align:center;
+}
+.login-expired table{
+
+    width: 70%!important;
+	margin:25px auto;
+}
+.login-expired th, .login-expired table{
+
+   border:1px solid #000!important;
+}
+.login-expired td{
+
+   border-right:1px solid #000!important;
+   border-top:none!important;
+}
+
+.login-expired-bttn{
+	padding:10px;
+}
+.login-expired .modal-header{
+	border:none!important;
+}
+
+@media (min-width: 320px) and (max-width: 767px) { 
+#contact-form .btn{
+	width:100%;
+	margin-left:0px;
+}
+
+}
+@media (min-width: 320px) and (max-width: 1000px) { 
+.started-link a{
+	width:100%;
+}
+.login-expired .modal-dialog{
+
+    width: 95%!important;
+}
+.login-expired table{
+
+    width: 100%!important;
+	margin:auto;
+}
+
+}
+.custom_input{
+    width: 70px !important;
+}
+
+.ranges li {
+
+    color: #47A447 !important;
+
+}
+.ranges li.active {
+    background-color: #47A447 !important;
+    border: 1px solid #e6e6e6 !important;
+    color: #fff !important;
+}
+.ranges li:hover {
+    background-color: #47A447 !important;
+    border: 1px solid #e6e6e6 !important;
+    color: #fff !important; }
+
+/*DROPZONE*/
+.dropzone > input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  top: 25px;
+  left: 0;
+  right: 0;
+  bottom: 0
+  height: 100px;
+}
+
+.dropzone_label {
+  position: initial;  
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #A7A9A7;
+  color: #fff;
+  border-radius: 5px;
+  line-height: 100px;
+  text-align: center;
+  cursor: pointer;
+  /*width: 400px;*/
+
+}
+#uploadFile{
+    /*height: 123px;*/
+    /*border:1px solid;*/
+    opacity: 1;
+    padding-top: 100px;
+
+}
+#uploadFile:focus{
+    background-color: none !important;
+    border: none !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+/*DROPZONE*/

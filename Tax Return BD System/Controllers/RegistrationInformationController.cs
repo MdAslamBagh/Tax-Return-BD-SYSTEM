@@ -21,12 +21,12 @@ namespace Tax_Return_BD_System.Controllers
         }
         public ActionResult Add()
         {
-           
+
             return View();
         }
         public ActionResult Register()
         {
-            
+
             return View();
         }
         // GET: RegistrationInformation/Details/5
@@ -45,11 +45,11 @@ namespace Tax_Return_BD_System.Controllers
         }
 
         // GET: RegistrationInformation/Create
-        //public ActionResult Add()
-        //{
-        //    ViewBag.Name = new SelectList(db.RoleInformations.Select(u => u.Name).ToList());
-        //    return View();
-        //}
+       // public ActionResult Register()
+       //{
+           //ViewBag.Name = new SelectList(db.RoleInformations.Select(u => u.Name).ToList());
+         //return View();
+       // }
 
         // POST: RegistrationInformation/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -60,16 +60,10 @@ namespace Tax_Return_BD_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (registrationInformation.Status == null)
-                {
-                    registrationInformation.Status = "Inactive";
-                }
-                if (registrationInformation.UserType == null)
-                {
-                    registrationInformation.UserType = "User";
-                }
+                registrationInformation.UserType = "User";
+                registrationInformation.Status = "InActive";
 
-                db.RegistrationInformations.Add(registrationInformation);         
+                db.RegistrationInformations.Add(registrationInformation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

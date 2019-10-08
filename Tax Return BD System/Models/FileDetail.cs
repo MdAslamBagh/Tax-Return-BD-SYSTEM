@@ -12,6 +12,8 @@ namespace Tax_Return_BD_System.Models
         public int Id { get; set; }
         public string FileName { get; set; }
         public string Extension { get; set; }
+        public int DocumentId { get; set; }
+        public virtual UserDocument UserDocument { get; set; }
 
     }
 }

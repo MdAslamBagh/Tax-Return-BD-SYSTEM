@@ -1,7 +1,7 @@
 ﻿@model Tax_Return_BD_System.Models.UserProfile
 @{
     ViewBag.Title = "Create_Profile";
-    Layout = "~/Views/Shared/UserLayout.cshtml";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
 @using (Html.BeginForm("Create_Profile", "UserInformation", FormMethod.Post, new { onSubmit = "return SubmitForm(this)" }))

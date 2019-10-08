@@ -16,7 +16,14 @@ namespace Tax_Return_BD_System.Controllers
         {
             return View();
         }
-
+        public ActionResult UserIndex()
+        {
+            return View();
+        }
+        public ActionResult AdminIndex()
+        {
+            return View();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

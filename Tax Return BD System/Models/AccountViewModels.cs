@@ -67,6 +67,7 @@ namespace Tax_Return_BD_System.Models
         [Key]
 
         [Required]
+        public int UserId { get; set; }
         public string FirstName { get; set; }
 
         public string MiddleName { get; set; }

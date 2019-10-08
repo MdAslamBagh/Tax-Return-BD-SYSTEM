@@ -1,0 +1,49 @@
+
+git bash here:
+aslam@DHKLTINWASLAM MINGW64 /d/Project/Software (master)
+$ git push -u origin master
+
+
+Github Upload Changes:
+1. $ cd d:
+2. $ cd project:
+3. $ cd software:
+UserName: MdAslamBagh
+Password:M01671959441ab
+
+$ git push -u origin master
+
+
+Visual Studio:
+
+git bash:
+
+git init
+
+git add .
+
+git add README.md
+
+git commit -m "first commit"
+
+git remote add origin https://github.com/MdAslamBagh/Tax-Return-BD-SYSTEM
+
+git push -u origin master
+
+
+
+git remote add origin https://github.com/MdAslamBagh/GSA-MANAGEMENT-INFORMATION-SYSTEM.git
+.......................
+
+echo "# Tax-Return-BD-SYSTEM" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/MdAslamBagh/Tax-Return-BD-SYSTEM.git
+git push -u origin master
+
+...........................
+
+
+
+

@@ -3,12 +3,12 @@ namespace Tax_Return_BD_System.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class initial1 : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.RegisterViewModels",
+                "dbo.RegistrationInformations",
                 c => new
                     {
                         FirstName = c.String(nullable: false, maxLength: 128),
@@ -27,7 +27,7 @@ namespace Tax_Return_BD_System.Migrations
         
         public override void Down()
         {
-            DropTable("dbo.RegisterViewModels");
+            DropTable("dbo.RegistrationInformations");
         }
     }
 }

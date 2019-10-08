@@ -1,0 +1,319 @@
+﻿@model Tax_Return_BD_System.Models.UserDocument
+
+@{
+    ViewBag.Title = "Create_Document";
+}
+
+    @using (Html.BeginForm("Create_Document", "UserInformation", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div class="form-horizontal">
+
+        @*<div class="row">
+            <div class="form-group">
+                @Html.LabelFor(model => model.DocumentName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.DocumentName, new { htmlAttributes = new { @class = "form-control", placeholder = "Document Name" } })
+                    @Html.ValidationMessageFor(model => model.DocumentName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label for="filedetails">Upload File</label>
+                </div>
+                <div class="col-md-2">
+                    <input type="file" name="file" multiple="multiple" />
+                </div>
+                </div>
+        </div>*@
+        <div class="tab-content">
+
+            <!-- #################------------PROFILE--------START----------################ -->
+            <div role="tabpanel" class="tab-pane" id="profile">
+
+                <form enctype="multipart/form-data" id="user-form" action="/index.php/user/admin/update/id/35317" method="post">
+                    <!--***********************************************************************************************************-->
+                    <h2>My profile&nbsp;&nbsp;</h2>
+                    <br>
+                    <div class="clearfix"></div>
+
+                    <p class="note">Fields with <span class="required">*</span> are required.</p>
+
+                    <!-- <div class="alert alert-error fade in" style=" ">
+                <a class="close" data-dismiss="alert" href="#">&times;</a></div> -->
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <!-- First column END -->
+
+                            <fieldset class="form-horizontal ">
+
+                                <div class="control-group ">
+                                    <!--<label>First Name <span class="required">*</span></label>--><label class="control-label required" style="color:#555555" for="inputMask">First Name <span class="required">*</span></label>                                <div class="controls">
+                                        <input size="20" maxlength="255" class="form-control" data-mask="999-99-999-9999-9" tabindex="1" onkeypress="return onlyAlphabets(event)" name="User[first_name]" id="User_first_name" type="text" value="mab">
+                                    </div>
+                                </div>
+
+                                <div class="control-group ">
+                                    <label class="control-label required" style="color:#555555" for="inputMask">Last Name <span class="required">*</span></label>                                <div class="form-controls">
+                                        <input size="20" maxlength="255" class="form-control" data-mask="999-99-999-9999-9" tabindex="2" onkeypress="return onlyAlphabets(event)" name="User[last_name]" id="User_last_name" type="text" value="bagh">
+                                    </div>
+                                </div>
+
+
+                                <div class="control-group ">
+                                    <label class="control-label required" style="color:#555555" for="inputMask">Email <span class="required">*</span></label>                                <div class="controls">
+                                        <input size="20" maxlength="255" class="form-control" data-mask="999-99-999-9999-9" tabindex="3" name="User[email]" id="User_email" type="text" value="mdaslambagh@gmail.com">
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </fieldset>
+
+                        </div> <!--col-lg-4--><!-- First column END -->
+
+                        <div class="col-lg-4">
+                            <!-- 2nd column START -->
+
+                            <fieldset class="form-horizontal ">
+
+                                <div class="control-group ">
+                                    <!--<label>First Name <span class="required">*</span></label>--><label class="control-label" style="color:#555555" for="inputMask">Middle Name</label>                                <div class="controls">
+                                        <input size="20" maxlength="255" class="form-control" data-mask="999-99-999-9999-9" tabindex="1" onkeypress="return onlyAlphabets(event)" name="User[middle_name]" id="User_middle_name" type="text" value="aslam">
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="control-group ">
+                                    <label class="control-label" style="color:#555555" for="inputMask">Mobile</label>                                <div class="form-controls">
+                                        <input size="20" maxlength="255" class="form-control" data-mask="999-99-999-9999-9" tabindex="2" name="User[mobile]" id="User_mobile" type="text" value="01521233128">
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                            </fieldset>
+
+                        </div> <!--col-lg-4--><!-- 2nd column END -->
+
+                    </div> <!--row-->
+
+                    <br>
+                    <div class="row" style="">
+                        <div class="col-lg-4 buttons">
+                            <input class="btn btn-danger btn-large" type="submit" name="yt0" value="Save">
+
+                        </div>
+
+
+
+                        <!-- <div class="col-lg-8 buttons">
+                        <button type="button" class="btn btn-danger btn-large pull-right" style="margin-right: 35px;" onclick="delete_user_account()" type="button"></button>
+
+                    </div> -->
+
+                    </div> <!--row-->
+
+
+
+
+
+                </form>
+
+                <div class="col-lg-4 buttons">
+
+
+
+                </div>
+
+            </div>
+
+            <!-- #################------------CHANGE PASSWORD--------START----------################ -->
+            <div role="tabpanel" class="tab-pane " id="updatePass">
+                <form enctype="multipart/form-data" name="changePassword" id="chnage-password-form" action="/index.php/user/admin/PassChange" method="post">
+                    <h2> Change Password&nbsp;&nbsp;</h2>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <!-- First column END -->
+
+                            <fieldset class="form-horizontal ">
+
+                                <!-- <div class="control-group ">
+                                                                <div class="controls">
+                                                                                                        </div>
+                            </div> -->
+                                <input class="form-control" name="User[id]" id="User_id" type="hidden" value="35317">
+                                <div class="control-group ">
+                                    <label class="control-label required" style="color:#555555" for="inputMask">Password <span class="required">*</span></label>                                <div class="form-controls">
+                                        <input size="20" maxlength="255" class="form-control" tabindex="2" name="UserChangePassword[password]" id="UserChangePassword_password" type="password"><span id="result" class="label label-warning"></span>
+                                        <div class="log " style="color:red; display:none;">
+                                            <div class="a-z sublog">Please add a lowercase letter (abcdefghijklmnopqrstuvwxyz)<br></div>
+                                            <div class="cap_a sublog">Please add an uppercase letter (ABCDEFGHIJKLMNOPQRSTUVWXYZ)<br></div>
+                                            <div class="num sublog">Please add a number (0123456789)<br></div>
+                                            <div class="more8 sublog">New password was less than 8 characters <br></div>
+                                        </div>
+                                        <div class="errorMessage" id="UserChangePassword_password_em_" style="display:none"></div>
+                                    </div>
+                                </div>
+
+
+                                <div class="control-group ">
+                                    <label class="control-label required" style="color:#555555" for="inputMask">Retype Password <span class="required">*</span></label>                                <div class="controls">
+                                        <input size="20" maxlength="255" class="form-control" tabindex="3" name="UserChangePassword[verifyPassword]" id="UserChangePassword_verifyPassword" type="password">                                    <div class="errorMessage" id="UserChangePassword_verifyPassword_em_" style="display:none"></div>
+                                    </div>
+                                </div>
+
+                                <br>
+                                <div class="row" style="">
+                                    <div class="col-lg-4 buttons">
+                                        <input class="btn btn-danger btn-large" type="submit" name="yt1" value="Save">
+                                    </div>
+                                </div> <!--row-->
+
+
+
+                            </fieldset>
+
+                        </div> <!--col-lg-4--><!-- First column END -->
+                    </div>
+                </form>
+            </div>
+
+            <!-- #################------------DOWNLOAD PDF--------START----------################ -->
+            <div role="tabpanel" class="tab-pane" id="pdf">
+
+                <div class="row">
+                    <div class="col-lg-12 center">
+                        <h2>Download Tax Return Form&nbsp;&nbsp;</h2>
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2" style="padding-top: 6px;">
+                        <b>Download PDF of&nbsp;&nbsp;</b>
+                    </div>
+                    <div class="col-lg-2">
+                        <select class="form-control" name="tax_year" id="tax_year">
+                            <option value="2016-2017">2016-2017</option>
+                            <option value="2017-2018">2017-2018</option>
+                            <option value="2018-2019">2018-2019</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4">
+                        <button type="button" class="btn btn-success btn-large" onclick="downloadPDF('34940')">Download&nbsp;&nbsp;</button>
+                    </div>
+                </div>
+                <br><br>
+
+            </div>
+
+
+            <!-- ################# gift Voucher ENDS ################ -->
+            <!-- ################# My Document START ################ -->
+            <div role="tabpanel" class="tab-pane active" id="myDocs">
+
+                <div class="row">
+                    <div class="col-lg-12 center my-document-profile">
+                        <h2 style="padding-bottom: 0px;">My Documents&nbsp;&nbsp;</h2>
+                    </div>
+                </div>
+                <br>
+                <form enctype="multipart/form-data" id="user-form" action="/index.php/user/admin/uploadMyDoc" method="post">
+                    <input type="hidden" name="user_id" value="35317">
+                    <div class="row">
+                        <div class="col-lg-6 bs-common-example">
+                            <label>Tax Year <span class="required">*</span></label>
+                            <select class="form-control" required="required" name="MyDocuments[tax_year]" id="MyDocuments_tax_year">
+                                <option value="">Choose Tax Year</option>
+                                <option value="2016-2017">2016-2017</option>
+                                <option value="2017-2018">2017-2018</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 bs-common-example">
+                            <label>Document Name <span class="required">*</span></label>
+                            <input size="20" maxlength="255" class="form-control" required="required" name="MyDocuments[doc_name]" id="MyDocuments_doc_name" type="text">
+                        </div>
+
+                        <div class="col-lg-6 bs-common-example note-height">
+                            <label>Notes</label>
+                            <textarea maxlength="500" class="form-control" name="MyDocuments[notes]" id="MyDocuments_notes"></textarea>
+                        </div>
+
+                        <div class="col-lg-6 bs-common-example dropzone">
+                            <label class="">Select Document <span class="required">*</span></label><br>
+                            <label class="dropzone_label col-lg-12" for="uploadFile">Click Or Drop the file here!!</label>
+                            <input class="col-lg-12" type="file" name="doc" required="required" id="uploadFile">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 bs-common-example text-right">
+
+                            <button type="submit" class="btn btn-success" id="uploadBtn" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Uploading...">Upload</button>
+
+
+                        </div>
+                    </div>
+                </form>
+
+                <hr>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="payment-status-document bs-common-example">
+                            <div id="my_doc_table_wrapper" class="dataTables_wrapper no-footer">
+                                <div class="dataTables_length" id="my_doc_table_length"><label>Show <select name="my_doc_table_length" aria-controls="my_doc_table" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div><div id="my_doc_table_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="my_doc_table"></label></div><table id="my_doc_table" class="table table-bordred table-striped table-hove dataTable no-footer" role="grid" aria-describedby="my_doc_table_info">
+                                    <thead>
+                                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="my_doc_table" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Tax Year: activate to sort column descending" style="width: 0px;">Tax Year</th><th class="sorting" tabindex="0" aria-controls="my_doc_table" rowspan="1" colspan="1" aria-label="Document Name: activate to sort column ascending" style="width: 0px;">Document Name</th><th class="sorting" tabindex="0" aria-controls="my_doc_table" rowspan="1" colspan="1" aria-label="Notes: activate to sort column ascending" style="width: 0px;">Notes</th><th style="text-align: center; width: 0px;" class="sorting" tabindex="0" aria-controls="my_doc_table" rowspan="1" colspan="1" aria-label=": activate to sort column ascending"></th></tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        <tr role="row" class="odd">
+                                            <td width="10%" class="sorting_1">2016-2017</td>
+                                            <td width="20%">tax</td>
+                                            <td width="55%">adsdsa</td>
+                                            <td style="text-align: center;">
+                                                <a title="" data-toggle="tooltip" href="/index.php/user/admin/downloadMyDoc/id/198" data-original-title="Download Document" target="_blank">
+                                                    <i class="fa fa-download fa-lg"></i>
+                                                </a>
+                                                <a title="" data-toggle="tooltip" data-original-title="Delete Document" href="/index.php/user/admin/deleteMyDoc/id/198" id="yt3"><i class="fa fa-remove fa-lg"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td width="10%" class="sorting_1">2017-2018</td>
+                                            <td width="20%">tax</td>
+                                            <td width="55%"></td>
+                                            <td style="text-align: center;">
+                                                <a title="" data-toggle="tooltip" href="/index.php/user/admin/downloadMyDoc/id/199" data-original-title="Download Document" target="_blank">
+                                                    <i class="fa fa-download fa-lg"></i>
+                                                </a>
+                                                <a title="" data-toggle="tooltip" data-original-title="Delete Document" href="/index.php/user/admin/deleteMyDoc/id/199" id="yt2"><i class="fa fa-remove fa-lg"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table><div class="dataTables_info" id="my_doc_table_info" role="status" aria-live="polite">Showing 1 to 2 of 2 entries</div><div class="dataTables_paginate paging_simple_numbers" id="my_doc_table_paginate"><a class="paginate_button previous disabled" aria-controls="my_doc_table" data-dt-idx="0" tabindex="0" id="my_doc_table_previous">Previous</a><span><a class="paginate_button current" aria-controls="my_doc_table" data-dt-idx="1" tabindex="0">1</a></span><a class="paginate_button next disabled" aria-controls="my_doc_table" data-dt-idx="2" tabindex="0" id="my_doc_table_next">Next</a></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- ################# My Document ENDS ################ -->
+        </div>
+
+        </div>
+
+}

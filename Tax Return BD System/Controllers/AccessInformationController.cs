@@ -13,7 +13,7 @@ namespace Tax_Return_BD_System.Controllers
     public class AccessInformationController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+       
         // GET: AccessListInformation
         //public ActionResult Index()
         //{
@@ -107,7 +107,7 @@ namespace Tax_Return_BD_System.Controllers
 
         public ActionResult Assign_Role()
         {
-            ViewBag.UserId = new SelectList(db.RegistrationInformations, "UserId", "UserName");
+            //ViewBag.UserId = new SelectList(db.RegisterViewModels, "UserId", "UserName");
             ViewBag.RoleId = new SelectList(db.RoleInformations, "RoleId", "RoleName");
             return View();
         }

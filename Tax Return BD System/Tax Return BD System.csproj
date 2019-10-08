@@ -199,21 +199,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909191140113_intial.cs" />
-    <Compile Include="Migrations\201909191140113_intial.Designer.cs">
-      <DependentUpon>201909191140113_intial.cs</DependentUpon>
+    <Compile Include="Migrations\201909291140025_initial.cs" />
+    <Compile Include="Migrations\201909291140025_initial.Designer.cs">
+      <DependentUpon>201909291140025_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909191152567_intial1.cs" />
-    <Compile Include="Migrations\201909191152567_intial1.Designer.cs">
-      <DependentUpon>201909191152567_intial1.cs</DependentUpon>
+    <Compile Include="Migrations\201910030557127_initial1.cs" />
+    <Compile Include="Migrations\201910030557127_initial1.Designer.cs">
+      <DependentUpon>201910030557127_initial1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909191601350_initial.cs" />
-    <Compile Include="Migrations\201909191601350_initial.Designer.cs">
-      <DependentUpon>201909191601350_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909211258070_initial1.cs" />
-    <Compile Include="Migrations\201909211258070_initial1.Designer.cs">
-      <DependentUpon>201909211258070_initial1.cs</DependentUpon>
+    <Compile Include="Migrations\201910051218411_initial2.cs" />
+    <Compile Include="Migrations\201910051218411_initial2.Designer.cs">
+      <DependentUpon>201910051218411_initial2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccessInformation.cs" />
@@ -392,6 +388,7 @@
     <Content Include="app-assets\css\core\mixins\main-menu-mixin.min.css" />
     <Content Include="app-assets\css\core\mixins\transitions.css" />
     <Content Include="app-assets\css\core\mixins\transitions.min.css" />
+    <Content Include="app-assets\css\custom.css" />
     <Content Include="app-assets\css\pages\coming-soon.css" />
     <Content Include="app-assets\css\pages\coming-soon.min.css" />
     <Content Include="app-assets\css\pages\error.css" />
@@ -482,7 +479,9 @@
     <Content Include="app-assets\css\plugins\ui\coming-soon.min.css" />
     <Content Include="app-assets\css\plugins\ui\shapes.css" />
     <Content Include="app-assets\css\plugins\ui\shapes.min.css" />
+    <Content Include="app-assets\css\style.css" />
     <Content Include="app-assets\data\jqvmaps\jquery.vmap.sampledata.js" />
+    <Content Include="app-assets\css\font-awesome.min.css" />
     <Content Include="app-assets\fonts\flag-icon-css\css\flag-icon.css" />
     <Content Include="app-assets\fonts\flag-icon-css\css\flag-icon.min.css" />
     <Content Include="app-assets\fonts\flag-icon-css\flags\1x1\ad.svg" />
@@ -1196,6 +1195,10 @@
     <Content Include="app-assets\images\logo\robust-logo-light-small.png" />
     <Content Include="app-assets\images\logo\robust-logo-light.png" />
     <Content Include="app-assets\images\logo\robust-logo-small.png" />
+    <Content Include="app-assets\images\logo\tax-logo.jpg" />
+    <Content Include="app-assets\images\logo\tax-logofinal.jpg" />
+    <Content Include="app-assets\images\logo\tax-return_logo.jpg" />
+    <Content Include="app-assets\images\logo\tax-return_logoo.jpg" />
     <Content Include="app-assets\images\pages\fitness-profile.jpg" />
     <Content Include="app-assets\images\pages\fitness-shoes.jpg" />
     <Content Include="app-assets\images\pages\fitness-slide-1.jpg" />
@@ -2127,9 +2130,9 @@
     <Content Include="Theme\scss\_responsive.scss" />
     <Content Include="Theme\scss\_theme_color.scss" />
     <Content Include="Theme\scss\_variables.scss" />
-    <Content Include="Views\Home\Indexx.cshtml" />
+    <Content Include="Views\Home\AdminIndex.cshtml" />
     <Content Include="Views\UserInformation\Create_Profile.cshtml" />
-    <Content Include="Views\UserInformation\Create_Document.cshtml" />
+    <Content Include="Views\UserInformation\Create_Documentttt.cshtml" />
     <Content Include="Views\UserInformation\Delete.cshtml" />
     <Content Include="Views\UserInformation\Details.cshtml" />
     <Content Include="Views\UserInformation\Edit.cshtml" />
@@ -2142,6 +2145,14 @@
     <Content Include="Views\AccessInformation\Index.cshtml" />
     <Content Include="Views\AccessInformation\SubMenu_Create.cshtml" />
     <Content Include="Views\AccessInformation\Assign_Role.cshtml" />
+    <Content Include="Views\UserInformation\Create_Documentt.cshtml" />
+    <Content Include="Views\UserInformation\Create_Document.cshtml" />
+    <Content Include="Views\Shared\AdminLayout.cshtml" />
+    <Content Include="Views\Shared\UserLayout.cshtml" />
+    <Content Include="Views\Home\UserIndex.cshtml" />
+    <Content Include="Views\Shared\Dynamic_Layout.cshtml" />
+    <Content Include="Views\UserInformation\Create_Document_Admin.cshtml" />
+    <Content Include="Views\UserInformation\Create_Profile_Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />
@@ -2160,17 +2171,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909191140113_intial.resx">
-      <DependentUpon>201909191140113_intial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909291140025_initial.resx">
+      <DependentUpon>201909291140025_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909191152567_intial1.resx">
-      <DependentUpon>201909191152567_intial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910030557127_initial1.resx">
+      <DependentUpon>201910030557127_initial1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909191601350_initial.resx">
-      <DependentUpon>201909191601350_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909211258070_initial1.resx">
-      <DependentUpon>201909211258070_initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910051218411_initial2.resx">
+      <DependentUpon>201910051218411_initial2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

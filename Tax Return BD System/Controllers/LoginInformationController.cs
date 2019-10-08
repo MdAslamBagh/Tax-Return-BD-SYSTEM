@@ -51,21 +51,32 @@ namespace Tax_Return_BD_System.Controllers
         }
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<ActionResult> DoLoginAsync(LoginInformation objUser)
+        public async System.Threading.Tasks.Task<ActionResult> DoLoginAsync(LoginViewModel objUser)
         {
 
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 using (ApplicationDbContext db = new ApplicationDbContext())
                 {
-                    //var obj = db.RegistrationInformations.Where(a => a.Email.Equals(objUser.Email) && a.Password.Equals(objUser.Password)).FirstOrDefault();
-                    //if (obj != null)
-                    //{
-                       // Session["UserID"] = obj.UserId.ToString();
-                       // Session["UserName"] = obj.UserName.ToString();
-                        return RedirectToAction("Indexx", "Home");
-                    //}
+                    //var obj = db.RegistrationInformations.Where(a => a.Email==a.Email && a.Password==a.Password).FirstOrDefault();
+                    var obj = db.RegistrationInformations.Where(a => a.Email.Equals(objUser.Email) && a.Password.Equals(objUser.Password)).FirstOrDefault();
+
+                    var type = obj.UserType.ToString();
+
+                    if (type == null)
+                    {
+                        return RedirectToAction("AdminIndex", "Home");
+                    }
+                    //var password = obj.PasswordHash.ToString();
+                    else if (obj != null && type == "Admin")
+                    {
+                        return RedirectToAction("AdminIndex", "Home");
+                    }
+                    else if (obj != null && type == "User")
+                    {
+                        return RedirectToAction("UserIndex", "Home");
+                    }
                 }
             }
             return View(objUser);
