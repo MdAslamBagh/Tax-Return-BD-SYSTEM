@@ -23,12 +23,13 @@ namespace Tax_Return_BD_System.Models
     public class UserDocument
     {
         [Key]
-        public int DocumentId { get; set; }
+        public Guid DocumentId { get; set; }
         public string Tax_Year { get; set; }
         [Display(Name = "DocumentName")]
         public string DocumentName { get; set; }
-        public string Notes { get; set; }
-        public virtual ICollection<FileDetail> FileDetails { get; set; }
+       public string Notes { get; set; }
+       public string Document { get; set; }
+       // public virtual ICollection<FileDetail> FileDetails { get; set; }
 
     }
 }

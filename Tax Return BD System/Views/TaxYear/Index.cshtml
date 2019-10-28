@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Tax_Return_BD_System.Models.TaxYear>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tax_Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Default_Code)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tax_Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Default_Code)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TaxYearId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TaxYearId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TaxYearId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -8,6 +8,7 @@ namespace Tax_Return_BD_System
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+			// filters.Add(new AuthorizeAttribute());//returnurl login controller call every action
         }
     }
 }

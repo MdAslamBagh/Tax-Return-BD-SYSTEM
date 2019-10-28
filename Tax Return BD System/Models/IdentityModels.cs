@@ -52,5 +52,7 @@ namespace Tax_Return_BD_System.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Tax_Return_BD_System.Models.TaxYear> TaxYears { get; set; }
     }
 }

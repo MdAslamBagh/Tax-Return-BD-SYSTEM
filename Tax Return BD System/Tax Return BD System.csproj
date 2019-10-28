@@ -195,21 +195,26 @@
     <Compile Include="Controllers\LoginInformationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegistrationInformationController.cs" />
+    <Compile Include="Controllers\TaxYearController.cs" />
     <Compile Include="Controllers\UserInformationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909291140025_initial.cs" />
-    <Compile Include="Migrations\201909291140025_initial.Designer.cs">
-      <DependentUpon>201909291140025_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201910191043244_initial.cs" />
+    <Compile Include="Migrations\201910191043244_initial.Designer.cs">
+      <DependentUpon>201910191043244_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910030557127_initial1.cs" />
-    <Compile Include="Migrations\201910030557127_initial1.Designer.cs">
-      <DependentUpon>201910030557127_initial1.cs</DependentUpon>
+    <Compile Include="Migrations\201910250321171_initial1.cs" />
+    <Compile Include="Migrations\201910250321171_initial1.Designer.cs">
+      <DependentUpon>201910250321171_initial1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201910051218411_initial2.cs" />
-    <Compile Include="Migrations\201910051218411_initial2.Designer.cs">
-      <DependentUpon>201910051218411_initial2.cs</DependentUpon>
+    <Compile Include="Migrations\201910250328174_initial2.cs" />
+    <Compile Include="Migrations\201910250328174_initial2.Designer.cs">
+      <DependentUpon>201910250328174_initial2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910260712410_initial3.cs" />
+    <Compile Include="Migrations\201910260712410_initial3.Designer.cs">
+      <DependentUpon>201910260712410_initial3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccessInformation.cs" />
@@ -219,6 +224,7 @@
     <Compile Include="Models\LoginInformation.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RegistrationInformation.cs" />
+    <Compile Include="Models\TaxYear.cs" />
     <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -1544,6 +1550,7 @@
     <Content Include="app-assets\vendors\js\ui\screenfull.min.js" />
     <Content Include="app-assets\vendors\js\ui\tether.min.js" />
     <Content Include="app-assets\vendors\js\ui\unison.min.js" />
+    <Content Include="assets\css\legendcss.css" />
     <Content Include="assets\css\style-rtl.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\images\59bcd30d43f62c5a5d06f9033ae3f971.jpg" />
@@ -1740,6 +1747,10 @@
     <Content Include="img\dummies\testimonial-author1.png" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="img\images.png" />
+    <Content Include="img\imageslogo.png" />
+    <Content Include="img\imagesss.png" />
+    <Content Include="img\imagessss.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\nivo-bullets.png" />
     <Content Include="img\slides\nivo\bg-1.jpg" />
@@ -1756,6 +1767,7 @@
     <Content Include="img\slides\slitslider\3.jpg" />
     <Content Include="img\slides\slitslider\4.jpg" />
     <Content Include="img\slides\slitslider\5.jpg" />
+    <Content Include="img\uploadimage.png" />
     <Content Include="img\works\full\image-01-full.jpg" />
     <Content Include="img\works\full\image-02-full.jpg" />
     <Content Include="img\works\full\image-03-full.jpg" />
@@ -2153,6 +2165,11 @@
     <Content Include="Views\Shared\Dynamic_Layout.cshtml" />
     <Content Include="Views\UserInformation\Create_Document_Admin.cshtml" />
     <Content Include="Views\UserInformation\Create_Profile_Admin.cshtml" />
+    <Content Include="Views\TaxYear\Create.cshtml" />
+    <Content Include="Views\TaxYear\Delete.cshtml" />
+    <Content Include="Views\TaxYear\Details.cshtml" />
+    <Content Include="Views\TaxYear\Edit.cshtml" />
+    <Content Include="Views\TaxYear\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />
@@ -2171,14 +2188,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909291140025_initial.resx">
-      <DependentUpon>201909291140025_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910191043244_initial.resx">
+      <DependentUpon>201910191043244_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910030557127_initial1.resx">
-      <DependentUpon>201910030557127_initial1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910250321171_initial1.resx">
+      <DependentUpon>201910250321171_initial1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201910051218411_initial2.resx">
-      <DependentUpon>201910051218411_initial2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201910250328174_initial2.resx">
+      <DependentUpon>201910250328174_initial2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910260712410_initial3.resx">
+      <DependentUpon>201910260712410_initial3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,7 +13,7 @@ namespace Tax_Return_BD_System.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201909291140025_initial"; }
+            get { return "201910191043244_initial"; }
         }
         
         string IMigrationMetadata.Source

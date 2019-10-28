@@ -76,14 +76,12 @@ namespace Tax_Return_BD_System.Migrations
                 "dbo.FileDetails",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         FileName = c.String(),
                         Extension = c.String(),
-                        UserDocument_DocumentId = c.Int(),
+                        DocumentId = c.Guid(nullable: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.UserDocuments", t => t.UserDocument_DocumentId)
-                .Index(t => t.UserDocument_DocumentId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.LoginInformations",
@@ -105,6 +103,22 @@ namespace Tax_Return_BD_System.Migrations
                         Entry_By = c.String(),
                     })
                 .PrimaryKey(t => t.MenuId);
+            
+            CreateTable(
+                "dbo.RegistrationInformations",
+                c => new
+                    {
+                        FirstName = c.String(nullable: false, maxLength: 128),
+                        MiddleName = c.String(),
+                        LastName = c.String(),
+                        Email = c.String(nullable: false),
+                        UserName = c.String(),
+                        Password = c.String(nullable: false, maxLength: 100),
+                        ConfirmPassword = c.String(),
+                        Status = c.String(),
+                        UserType = c.String(),
+                    })
+                .PrimaryKey(t => t.FirstName);
             
             CreateTable(
                 "dbo.RoleInformations",
@@ -140,7 +154,7 @@ namespace Tax_Return_BD_System.Migrations
                 "dbo.UserDocuments",
                 c => new
                     {
-                        DocumentId = c.Int(nullable: false, identity: true),
+                        DocumentId = c.Guid(nullable: false),
                         Tax_Year = c.String(),
                         DocumentName = c.String(),
                         Notes = c.String(),
@@ -177,10 +191,8 @@ namespace Tax_Return_BD_System.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.FileDetails", "UserDocument_DocumentId", "dbo.UserDocuments");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.FileDetails", new[] { "UserDocument_DocumentId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
@@ -192,6 +204,7 @@ namespace Tax_Return_BD_System.Migrations
             DropTable("dbo.SubMenuItems");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.RoleInformations");
+            DropTable("dbo.RegistrationInformations");
             DropTable("dbo.MenuItems");
             DropTable("dbo.LoginInformations");
             DropTable("dbo.FileDetails");

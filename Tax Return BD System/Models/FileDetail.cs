@@ -9,11 +9,10 @@ namespace Tax_Return_BD_System.Models
     public class FileDetail
     {
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string FileName { get; set; }
         public string Extension { get; set; }
-        public int DocumentId { get; set; }
-        public virtual UserDocument UserDocument { get; set; }
+        public Guid DocumentId { get; set; }
 
     }
 }

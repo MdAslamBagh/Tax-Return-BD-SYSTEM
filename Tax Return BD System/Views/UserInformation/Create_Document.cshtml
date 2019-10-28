@@ -3,27 +3,26 @@
     ViewBag.Title = "Create_Document";
     Layout = "~/Views/Shared/UserLayout.cshtml";
 }
-
+<link href="~/assets/css/legendcss.css" rel="stylesheet" />
 @using (Html.BeginForm("Create_Document", "UserInformation", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+
 <div role="tabpanel" class="tab-pane active" id="myDocs">
 
     <div class="row">
         <div class="col-lg-12 center my-document-profile">
-            <h2 style="padding-bottom: 0px;">My Documents&nbsp;&nbsp;</h2>
+          
         </div>
     </div>
     <br>
  
         <input type="hidden" name="user_id" value="35317">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">My Document</legend>
         <div class="row">
             <div class="col-lg-6 bs-common-example">
                 <label>Tax Year <span class="required">*</span></label>
-                <select class="form-control" required="required" name="Tax_Year" id="MyDocuments_tax_year">
-                    <option value="">Choose Tax Year</option>
-                    <option value="2016-2017">2016-2017</option>
-                    <option value="2017-2018">2017-2018</option>
-                </select>
+                <input id="taxyearcode" name="Tax_Year" placeholder="Tax_Year" class="form-control" type="text" value="@ViewBag.Tax_Year" readonly="readonly">
             </div>
             <div class="col-lg-6 bs-common-example">
                 <label>Document Name <span class="required">*</span></label>
@@ -31,13 +30,13 @@
             </div>
 
             <div class="col-lg-6 bs-common-example note-height">
-                <label>Notes</label>
+                <label>Remarks</label>
                 <textarea maxlength="500" class="form-control" name="Notes" id="MyDocuments_notes"></textarea>
             </div>
 
             <div class="col-lg-6 bs-common-example dropzone">
-                <label class="">Select Document <span class="required">*</span></label><br>
-                <label class="dropzone_label col-lg-12" for="uploadFile">Click Or Drop the file here!!</label>
+               
+                <img class="imgUserN" id="imgUser" name="imgUser" src="~/img/uploadimage.png">
                 <input class="col-lg-12" type="file" name="file" multiple="multiple" required="required" id="uploadFile">
             </div>
 
@@ -50,27 +49,28 @@
 
             </div>
         </div>
-
-    <hr>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="payment-status-document bs-common-example">
+       </fieldset>
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="payment-status-document bs-common-example">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
-    <thead>
-        <tr>
+                        <thead>
+                            <tr>
 
-            <th>Tax_Year</th>
-            <th>DocumentName</th>
-            <th>Notes</th>
-            <th></th>
-        </tr>
-    </thead>
-</table>
+                                <th>Tax_Year</th>
+                                <th>DocumentName</th>
+                                <th>Remarks</th>
+                                <th>Document</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
 
         </div>
-    </div>
+</div>
 }
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css">
@@ -85,22 +85,25 @@
             }
             //$this.button('reset');
         });
-         var Popup, dataTables;
-            $(document).ready(function () {
-                dataTables = $('#example').DataTable({
-                    "ajax": {
-                        "url": "/UserInformation/GetData",
-                        "type": "GET",
-                        "datatype": "JSON"
+        var Popup, dataTables;
+        $(document).ready(function () {
+            dataTables = $('#example').DataTable({
+                "ajax": {
+                    "url": "/UserInformation/GetData",
+                    "type": "GET",
+                    "datatype": "JSON"
 
-                    },
+                },
 
-                    "columns": [
-                        { "data": "Tax_Year" },
-                        { "data": "DocumentName" },
-                        { "data": "Notes" },
-                        { "data": "DocumentId", "render": function (data) {
-                                return "<a class='btn btn-default btn-sm' onclick=location.href='@Url.Action("Delete", "UserInformation")/" + data + "'><i class='fa fa-pencil'></i> Delete</a><a class='btn btn-danger btn-sm'style='margin-left:5px'onclick=Delete("+ data +")><i class='fa fa-trash'></i> Send</a>"
+                "columns": [
+                    { "data": "Tax_Year" },
+                    { "data": "DocumentName" },
+                    { "data": "Notes" },
+                    { "data": "Document" },
+
+                    {
+                        "data": "DocumentId", "render": function (data) {
+                            return "<a class='btn btn-default btn-sm' onclick=location.href='@Url.Action("GetEmailFileById", "UserInformation")/" + data + "'><i class='fa fa-pencil'></i>edit</a><a class='btn btn-danger btn-sm'style='margin-left:5px'onclick=getfile("+ data +")><i class='fa fa-trash'></i> Send</a>"
                                 },
                                     "orderable": false,
                                     "searchable":false,
@@ -120,6 +123,31 @@
 
 
     });
+       function getfile(id) {
+
+                        if (confirm('Are you sure you want to Send the email ?'))
+                        {
+
+                            $.ajax({
+                                type: "post",
+                                url: '@Url.Action("GetEmailById", "UserInformation")/' + id,
+                                success: function (data) {
+                                    if (data.success) {
+
+                                        dataTables.ajax.reload();
+
+                                        $.notify(data.message, {
+                                            globalPosition: "top center",
+                                            className: "success"
+
+                                        })
+
+
+                                    }
+                                }
+                            });
+                        }
+                    }
 
 </script>
 

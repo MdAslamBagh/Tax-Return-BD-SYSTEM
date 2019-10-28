@@ -10,6 +10,9 @@ using System.Web;
 using System.Web.Mvc;
 using Tax_Return_BD_System.Models;
 
+using System.Data.SqlClient;
+using System.Configuration;
+
 namespace Tax_Return_BD_System.Controllers
 {
     public class UserInformationController : Controller
@@ -71,16 +74,86 @@ namespace Tax_Return_BD_System.Controllers
         }
 
 
+
+        //email
+
+        public ActionResult GetEmailFileById(UserDocument userDocument)
+        {
+
+            var userDocuments = from userdocument in db.UserDocuments join file in db.FileDetails on userdocument.DocumentId equals file.DocumentId select new { userdocument.Tax_Year, userdocument.DocumentName, userdocument.Notes };
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult GetEmailById(int id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+              //  var userDocuments = from userdocument in db.UserDocuments join file in db.FileDetails on userdocument.DocumentId equals file.DocumentId where userdocument.DocumentId== id select new { userdocument.Tax_Year, userdocument.DocumentName, file.FileName };
+               // var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"));
+                //UserDocument userDocument = db.UserDocuments.Where(x => x.AirlinesId == id).FirstOrDefault<AirlinesInformation>();
+                //db.AirlinesInformations.Remove(AirlinesInformations);
+                //db.SaveChanges();
+                return Json(new { success = true, message = "Email Send Successfully" }, JsonRequestBehavior.AllowGet);
+            }
+
+
+        }
+
+
+
         public ActionResult GetData()
         {
-            List<UserDocument> userDocuments = db.UserDocuments.ToList<UserDocument>();
-            return Json(new { data = userDocuments }, JsonRequestBehavior.AllowGet);
+
+            List <UserDocument> userdocuments= new List<UserDocument>();
+            string cs = ConfigurationManager.ConnectionStrings["TaxDBContext"].ConnectionString;
+
+            string queryString = "select *,(SELECT STRING_AGG(FileName, ', ') FROM filedetails where DocumentId=a.DocumentId)filename from UserDocuments a";
+              using (SqlConnection connection =new SqlConnection(cs))
+            {
+                SqlCommand command =new SqlCommand(queryString, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    UserDocument UserDocument = new UserDocument();
+                    UserDocument.Tax_Year = reader["Tax_Year"].ToString();
+                    UserDocument.DocumentName= reader["DocumentName"].ToString();
+                    UserDocument.Notes = reader["Notes"].ToString();
+                    UserDocument.Document = reader["filename"].ToString();                   
+                    userdocuments.Add(UserDocument);
+                }
+
+               
+                reader.Close();
+            }
+            //var userDocuments = from userdocument in db.UserDocuments join file in db.FileDetails on userdocument.DocumentId equals file.DocumentId  select new  {userdocument.Tax_Year,userdocument.DocumentName,file.FileName};
+            //var sdf = db.FileDetails.Select(x => x.FileName);
+            //var ssss = string.Join(",", sdf);
+
+
+
+            //var userDocumentss= from userdocument in db.UserDocuments join file in db.FileDetails on userdocument.DocumentId equals file.DocumentId select new { userdocument.Tax_Year, userdocument.DocumentName, ssss };
+
+
+            // var userDocuments = from userdocument in db.UserDocuments join file in db.FileDetails on userdocument.DocumentId equals file.DocumentId select new { userdocument.Tax_Year, userdocument.DocumentName, userdocument.Notes, userdocument.DocumentId, file.FileName };
+
+            return Json(new { data = userdocuments }, JsonRequestBehavior.AllowGet);
+
+
 
         }
 
         [HttpGet]
         public ActionResult Create_Document()
         {
+            List<TaxYear> taxlist = db.TaxYears.Where(a => a.Default_Code == true).ToList<TaxYear>();
+            TaxYear tax = new TaxYear();
+            tax = taxlist.FirstOrDefault();
+            string taxyear = tax.Tax_Year;
+
+            ViewBag.Tax_Year = taxyear;
             return View();
         }
 
@@ -90,6 +163,11 @@ namespace Tax_Return_BD_System.Controllers
            
             if (ModelState.IsValid)
             {
+
+                userDocument.DocumentId = Guid.NewGuid();
+                db.UserDocuments.Add(userDocument);
+                db.SaveChanges();
+
                 List<FileDetail> fileDetails = new List<FileDetail>();
                 for (int i = 0; i < Request.Files.Count; i++)
                 {
@@ -101,24 +179,19 @@ namespace Tax_Return_BD_System.Controllers
                         var fileName = Path.GetFileName(file.FileName);
                         FileDetail fileDetail = new FileDetail()
                         {
+                            Id = Guid.NewGuid(),
                             FileName = fileName,
-                            Extension = Path.GetExtension(fileName),
-                            //Id = Guid.NewGuid()
-                            //Id = Guid.NewGuid();
-                            //Id = fileDetail.Id;
-
-
+                            Extension = Path.GetExtension(fileName),                          
+                            DocumentId= userDocument.DocumentId
                         };
                         fileDetails.Add(fileDetail);
-
                         var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"),fileDetail.Id+ fileDetail.Extension);
                         file.SaveAs(path);
+
+                        db.FileDetails.Add(fileDetail);
+                        db.SaveChanges();
                     }
                 }
-
-                userDocument.FileDetails = fileDetails;
-                db.UserDocuments.Add(userDocument);
-                db.SaveChanges();
                 return RedirectToAction("Create_Document");
             }
 
@@ -172,7 +245,7 @@ namespace Tax_Return_BD_System.Controllers
                     }
                 }
 
-                userDocument.FileDetails = fileDetails;
+            //    userDocument.FileDetails = fileDetails;
                 db.UserDocuments.Add(userDocument);
                 db.SaveChanges();
                 return RedirectToAction("Create_Document");

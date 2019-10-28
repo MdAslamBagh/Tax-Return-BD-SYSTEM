@@ -7,13 +7,13 @@ namespace Tax_Return_BD_System.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class initial2 : IMigrationMetadata
+    public sealed partial class initial1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910051218411_initial2"; }
+            get { return "201910250321171_initial1"; }
         }
         
         string IMigrationMetadata.Source
