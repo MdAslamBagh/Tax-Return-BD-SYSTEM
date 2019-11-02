@@ -60,8 +60,8 @@ namespace Tax_Return_BD_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                registrationInformation.UserType = "User";
-                registrationInformation.Status = "InActive";
+                registrationInformation.UserType = "Admin";
+                registrationInformation.Status = "Active";
 
                 db.RegistrationInformations.Add(registrationInformation);
                 db.SaveChanges();

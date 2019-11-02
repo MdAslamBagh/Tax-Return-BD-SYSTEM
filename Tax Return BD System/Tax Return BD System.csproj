@@ -216,6 +216,10 @@
     <Compile Include="Migrations\201910260712410_initial3.Designer.cs">
       <DependentUpon>201910260712410_initial3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910290545374_initial4.cs" />
+    <Compile Include="Migrations\201910290545374_initial4.Designer.cs">
+      <DependentUpon>201910290545374_initial4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccessInformation.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2170,6 +2174,7 @@
     <Content Include="Views\TaxYear\Details.cshtml" />
     <Content Include="Views\TaxYear\Edit.cshtml" />
     <Content Include="Views\TaxYear\Index.cshtml" />
+    <Content Include="Views\UserInformation\Edit_Email.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Upload\" />
@@ -2199,6 +2204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910260712410_initial3.resx">
       <DependentUpon>201910260712410_initial3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910290545374_initial4.resx">
+      <DependentUpon>201910290545374_initial4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,9 +9,16 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Tax_Return_BD_System.Models;
-
+using System.Globalization;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Net.Mail;
+
 
 namespace Tax_Return_BD_System.Controllers
 {
@@ -73,7 +80,42 @@ namespace Tax_Return_BD_System.Controllers
             return View(userProfile);
         }
 
+        //Edit
 
+        public ActionResult Edit_Email(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            UserDocument documents = db.UserDocuments.Find(id);
+            if (documents == null)
+            {
+                return HttpNotFound();
+            }
+            return View(documents);
+        }
+
+        // POST: AirlinesInformation/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(UserDocument documents)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(documents).State = EntityState.Modified;
+
+            
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(documents);
+        }
 
         //email
 
@@ -86,20 +128,19 @@ namespace Tax_Return_BD_System.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetEmailById(int id)
+        public async Task<ActionResult> GetEmailById(int id)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-              //  var userDocuments = from userdocument in db.UserDocuments join file in db.FileDetails on userdocument.DocumentId equals file.DocumentId where userdocument.DocumentId== id select new { userdocument.Tax_Year, userdocument.DocumentName, file.FileName };
-               // var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"));
-                //UserDocument userDocument = db.UserDocuments.Where(x => x.AirlinesId == id).FirstOrDefault<AirlinesInformation>();
-                //db.AirlinesInformations.Remove(AirlinesInformations);
-                //db.SaveChanges();
+              
+               // await UserDocument.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                //var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), files.Id + files.Extension);
+                }
+
                 return Json(new { success = true, message = "Email Send Successfully" }, JsonRequestBehavior.AllowGet);
             }
-
-
-        }
+        
 
 
 
@@ -118,6 +159,8 @@ namespace Tax_Return_BD_System.Controllers
                 while (reader.Read())
                 {
                     UserDocument UserDocument = new UserDocument();
+                    UserDocument.Id = Convert.ToInt32(reader["Id"]);
+                    //UserDocument.DocumentId = Guid.Parse(reader["DocumentId"].ToString());
                     UserDocument.Tax_Year = reader["Tax_Year"].ToString();
                     UserDocument.DocumentName= reader["DocumentName"].ToString();
                     UserDocument.Notes = reader["Notes"].ToString();

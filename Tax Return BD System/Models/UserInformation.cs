@@ -23,6 +23,7 @@ namespace Tax_Return_BD_System.Models
     public class UserDocument
     {
         [Key]
+        public int Id { get; set; }
         public Guid DocumentId { get; set; }
         public string Tax_Year { get; set; }
         [Display(Name = "DocumentName")]
